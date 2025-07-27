@@ -132,8 +132,8 @@ AWS_USE_PATH_STYLE_ENDPOINT=false
 VITE_APP_NAME="${APP_NAME}"
 
 # Google OAuth - Set to 'mock' for testing
-GOOGLE_CLIENT_ID=809817874868-v0jepa3mma22f6v7ja83c7q3hl7dtflg.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=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
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
 GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback
 
 # Facebook OAuth - Set to 'mock' for testing
