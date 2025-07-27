@@ -94,15 +94,30 @@ Edit file `.env` untuk konfigurasi OAuth:
 
 ```env
 # Google OAuth
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_CLIENT_ID=your_google_client_id_here
+GOOGLE_CLIENT_SECRET=your_google_client_secret_here
 GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback
 
 # Facebook OAuth  
-FACEBOOK_CLIENT_ID=your_facebook_client_id
-FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+FACEBOOK_CLIENT_ID=your_facebook_client_id_here
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret_here
 FACEBOOK_REDIRECT_URI=http://127.0.0.1:8000/auth/facebook/callback
 ```
+
+**Cara mendapatkan OAuth Credentials:**
+
+1. **Google OAuth:**
+   - Buka [Google Cloud Console](https://console.cloud.google.com/)
+   - Buat project baru atau pilih project yang ada
+   - Enable Google+ API
+   - Buat OAuth 2.0 Client ID di Credentials
+   - Set Authorized redirect URIs: `http://127.0.0.1:8000/auth/google/callback`
+
+2. **Facebook OAuth:**
+   - Buka [Facebook Developers](https://developers.facebook.com/)
+   - Buat aplikasi baru
+   - Tambahkan Facebook Login product
+   - Set Valid OAuth Redirect URIs: `http://127.0.0.1:8000/auth/facebook/callback`
 
 ### 6. Database Migration & Seeding
 
