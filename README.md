@@ -12,8 +12,8 @@ Aplikasi sederhana berbasis Laravel + MySQL + Tailwind CSS v3 untuk sistem login
 ### 👥 Membership
 - Tersedia 3 tipe membership:
   - 🟢 **Tipe A**: Akses 3 Artikel & 3 Video
-  - 🔵 **Tipe B**: Akses 10 Artikel & 10 Video
-  - 🟣 **Tipe C**: Akses semua Artikel & Video
+  - 🔵 **Tipe B**: Akses 6 Artikel & 6 Video
+  - 🟣 **Tipe C**: Akses 12 Artikel & 12 Video
 
 ### 📄 Konten
 - Halaman dinamis untuk **Artikel** dan **Video**
@@ -44,15 +44,11 @@ Aplikasi sederhana berbasis Laravel + MySQL + Tailwind CSS v3 untuk sistem login
 
 ---
 
-🏆 Nilai Tambah (Bonus)
- CMS Integration (Expression Engine ready)
-
- Tailwind dark mode support
-
- UI components reusable (x-button, x-card, etc)
-
- Pagination dan Alert Component
-
+## 🏆 Nilai Tambah (Bonus)
+- ✅ CMS Integration (Expression Engine ready)
+- ✅ Tailwind dark mode support  
+- ✅ UI components reusable (x-button, x-card, etc)
+- ✅ Pagination dan Alert Component
 
 Untuk isi video dan artikel pakai data dummy saja dan diisi semua
 
@@ -61,82 +57,131 @@ Untuk isi video dan artikel pakai data dummy saja dan diisi semua
 ### 1. Clone Repo
 
 ```bash
-git clone https://github.com/username/membership-app.git
-cd membership-app
+git clone https://github.com/ihzrafy/membership_app.git
+cd membership_app
+```
 
+### 2. Install Dependencies
 
-APP_NAME=Laravel
-APP_ENV=local
-APP_KEY=base64:fxjDjb+jvvDvKt9aswB1MgtQNwJaKP2R+6kjBjn8uQA=
-APP_DEBUG=true
-APP_URL=http://localhost
+```bash
+composer install
+npm install
+```
 
-APP_LOCALE=en
-APP_FALLBACK_LOCALE=en
-APP_FAKER_LOCALE=en_US
+### 3. Environment Setup
 
-APP_MAINTENANCE_DRIVER=file
-# APP_MAINTENANCE_STORE=database
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-PHP_CLI_SERVER_WORKERS=4
+### 4. Database Configuration
 
-BCRYPT_ROUNDS=12
+Edit file `.env` sesuai konfigurasi database Anda:
 
-LOG_CHANNEL=stack
-LOG_STACK=single
-LOG_DEPRECATIONS_CHANNEL=null
-LOG_LEVEL=debug
-
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=membership_app
 DB_USERNAME=root
 DB_PASSWORD=root
+```
 
-SESSION_DRIVER=database
-SESSION_LIFETIME=120
-SESSION_ENCRYPT=false
-SESSION_PATH=/
-SESSION_DOMAIN=null
+### 5. OAuth Configuration
 
-BROADCAST_CONNECTION=log
-FILESYSTEM_DISK=local
-QUEUE_CONNECTION=database
+Edit file `.env` untuk konfigurasi OAuth:
 
-CACHE_STORE=database
-# CACHE_PREFIX=
-
-MEMCACHED_HOST=127.0.0.1
-
-REDIS_CLIENT=phpredis
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-MAIL_MAILER=log
-MAIL_SCHEME=null
-MAIL_HOST=127.0.0.1
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_FROM_ADDRESS="hello@example.com"
-MAIL_FROM_NAME="${APP_NAME}"
-
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_DEFAULT_REGION=us-east-1
-AWS_BUCKET=
-AWS_USE_PATH_STYLE_ENDPOINT=false
-
-VITE_APP_NAME="${APP_NAME}"
-
-# Google OAuth - Set to 'mock' for testing
-GOOGLE_CLIENT_ID=809817874868-v0jepa3mma22f6v7ja83c7q3hl7dtflg.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=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
+```env
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback
 
-# Facebook OAuth - Set to 'mock' for testing
-FACEBOOK_CLIENT_ID=mock_facebook_client_id  
-FACEBOOK_CLIENT_SECRET=mock_facebook_client_secret
+# Facebook OAuth  
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
 FACEBOOK_REDIRECT_URI=http://127.0.0.1:8000/auth/facebook/callback
+```
+
+### 6. Database Migration & Seeding
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+### 7. Build Assets
+
+```bash
+npm run build
+# atau untuk development
+npm run dev
+```
+
+### 8. Run Application
+
+```bash
+php artisan serve
+```
+
+Buka browser dan akses: `http://127.0.0.1:8000`
+
+---
+
+## 📋 Features Overview
+
+### Authentication Features
+- ✅ Manual registration with membership selection
+- ✅ Google OAuth with stateless mode (no session issues)
+- ✅ Facebook OAuth integration
+- ✅ Seamless login/logout functionality
+- ✅ Session management with database driver
+
+### Membership System
+- ✅ Three membership tiers (A, B, C)
+- ✅ Content filtering based on membership level
+- ✅ Upgrade/downgrade membership functionality
+- ✅ Dashboard with membership statistics
+
+### Content Management
+- ✅ Article system with pagination
+- ✅ Video system with pagination  
+- ✅ Seeded dummy content (20 articles, 20 videos)
+- ✅ Access control per membership type
+
+### Technical Features
+- ✅ Responsive design with Tailwind CSS
+- ✅ Database sessions for scalability
+- ✅ Comprehensive error handling
+- ✅ Logging for debugging
+- ✅ CSRF protection
+- ✅ Modern Laravel best practices
+
+---
+
+## 🎯 Membership Access Levels
+
+| Membership | Articles | Videos | Description |
+|------------|----------|--------|-------------|
+| **Type A** | 3        | 3      | Basic access |
+| **Type B** | 6        | 6      | Standard access |
+| **Type C** | 12       | 12     | Premium access |
+
+---
+
+## 🛠️ Development Notes
+
+- OAuth Google menggunakan **stateless mode** untuk menghindari session validation issues
+- Database sessions digunakan untuk better scalability
+- Comprehensive error handling dengan user-friendly messages
+- Logging tersedia untuk debugging OAuth dan aplikasi
+- Test routes tersedia di environment local (`/test/config`, `/oauth-test/google`)
+
+---
+
+## 📞 Support
+
+Jika ada pertanyaan atau issue, silakan buat issue di repository ini.
+
+**Happy Coding! 🚀**
