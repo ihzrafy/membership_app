@@ -1,0 +1,20 @@
+{
+    "name": "membership-app",
+    "description": "Laravel Membership Application",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "serve": "php artisan serve"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.7",
+        "alpinejs": "^3.13.3",
+        "autoprefixer": "^10.4.16",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4.32",
+        "tailwindcss": "^3.3.6",
+        "vite": "^5.0"
+    }
+}
