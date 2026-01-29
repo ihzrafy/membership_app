@@ -7,6 +7,8 @@ use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeEmail;
 
 class SocialAuthController extends Controller
 {
@@ -135,10 +137,18 @@ class SocialAuthController extends Controller
                 'provider' => $provider,
                 'provider_id' => $socialUser->getId(),
                 'avatar' => $socialUser->getAvatar(),
-                'membership_type' => 'A', // Default membership
+                'membership_type' => null, // Set null so they are forced to choose
                 'email_verified_at' => now(),
             ]);
             \Log::info('New user created', ['user_id' => $user->id]);
+
+            // Marketing Automation: Send Welcome Email
+            try {
+                Mail::to($user->email)->send(new WelcomeEmail($user));
+            } catch (\Exception $e) {
+                // Log error but continue registration flow
+                \Log::error('Failed to send welcome email: ' . $e->getMessage());
+            }
 
             Auth::login($user);
             \Log::info('Logged in new user', ['user_id' => $user->id]);

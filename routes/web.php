@@ -7,7 +7,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\EmailAuthController;
 use App\Http\Controllers\Auth\MembershipController;
+use App\Http\Controllers\MarketingController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +63,14 @@ Route::post('/register', function () {
     
     auth()->login($user);
     
+    // Marketing Automation: Send Welcome Email
+    try {
+        Mail::to($user->email)->send(new WelcomeEmail($user));
+    } catch (\Exception $e) {
+        // Log error but continue registration flow
+        \Log::error('Failed to send welcome email: ' . $e->getMessage());
+    }
+
     return redirect()->route('dashboard')->with('success', 'Account created successfully! Welcome to Membership Type ' . $data['membership_type']);
 })->name('register.post')->middleware('guest');
 
@@ -90,6 +101,10 @@ Route::middleware(['auth'])->group(function () {
     // Videos
     Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
     Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
+
+    // Marketing Automation (Admin Only in real app, but for demo accessible)
+    Route::get('/marketing', [MarketingController::class, 'index'])->name('marketing.index');
+    Route::post('/marketing/send', [MarketingController::class, 'sendCampaign'])->name('marketing.send');
 });
 
 // Fallback route

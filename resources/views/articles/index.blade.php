@@ -28,7 +28,7 @@
             $limits = auth()->user()->getMembershipLimits();
         @endphp
         
-        @if($limits['articles'] !== null)
+        @if($limits['articles'] !== null && $limits['articles'] < 1000000)
             <div class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-4 mb-6">
                 <div class="flex items-center">
                     <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">

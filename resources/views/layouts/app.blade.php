@@ -92,9 +92,46 @@
                             <a href="{{ route('videos.index') }}" class="text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors">
                                 Video
                             </a>
-                            <a href="{{ route('dashboard') }}" class="text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors">
+                            <a href="{{ route('dashboard') }}" class="text-gray-900 dark:text-gray-100 px-3 py-2 text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                                 Dashboard
                             </a>
+
+                            @if(auth()->user()->email === 'admin@membership.com')
+                                <a href="{{ route('marketing.index') }}" class="text-indigo-600 dark:text-indigo-400 px-3 py-2 text-sm font-bold border border-indigo-200 dark:border-indigo-800 rounded-md bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 transition-colors">
+                                    Marketing 🚀
+                                </a>
+                            @endif
+
+                            <div class="relative ml-3" x-data="{ open: false }">
+                                <button @click="open = !open" class="flex items-center space-x-2 text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                                    @if(auth()->user()->avatar)
+                                        <img src="{{ auth()->user()->avatar }}" alt="Avatar" class="w-8 h-8 rounded-full">
+                                    @else
+                                        <div class="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
+                                            <span class="text-sm font-medium">{{ substr(auth()->user()->name, 0, 1) }}</span>
+                                        </div>
+                                    @endif
+                                    <span class="text-sm font-medium">{{ auth()->user()->name }}</span>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+
+                                <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50">
+                                    <div class="px-4 py-2 text-xs text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                                        Membership: <span class="font-semibold text-blue-600">Tipe {{ auth()->user()->membership_type }}</span>
+                                    </div>
+                                    <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Dashboard
+                                    </a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         @endauth
                     </div>
 

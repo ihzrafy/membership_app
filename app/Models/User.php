@@ -40,8 +40,8 @@ class User extends Authenticatable
     {
         return match($this->membership_type) {
             self::MEMBERSHIP_A => ['articles' => 3, 'videos' => 3],
-            self::MEMBERSHIP_B => ['articles' => 6, 'videos' => 6],
-            self::MEMBERSHIP_C => ['articles' => 12, 'videos' => 12], // 12 instead of unlimited
+            self::MEMBERSHIP_B => ['articles' => 10, 'videos' => 10],
+            self::MEMBERSHIP_C => ['articles' => PHP_INT_MAX, 'videos' => PHP_INT_MAX],
             default => ['articles' => 0, 'videos' => 0]
         };
     }

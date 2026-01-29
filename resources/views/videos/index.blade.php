@@ -28,7 +28,7 @@
             $limits = auth()->user()->getMembershipLimits();
         @endphp
         
-        @if($limits['videos'] !== null)
+        @if($limits['videos'] !== null && $limits['videos'] < 1000000)
             <div class="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-lg p-4 mb-6">
                 <div class="flex items-center">
                     <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">

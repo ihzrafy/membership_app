@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('provider')->nullable(); // google, facebook, manual
             $table->string('provider_id')->nullable();
-            $table->enum('membership_type', ['A', 'B', 'C'])->default('A');
+            $table->enum('membership_type', ['A', 'B', 'C'])->nullable();
             $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
