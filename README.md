@@ -7,13 +7,20 @@ Aplikasi sederhana berbasis Laravel + MySQL + Tailwind CSS v3 untuk sistem login
 ### 🔐 Autentikasi
 - [x] **Login & Register Manual (Email & Password)**
 - [x] **Login dengan Google** *(OAuth 2.0)*
-- [x] **Login dengan Facebook** *(OAuth 2.0)*
+- [ ] **Login dengan Facebook** *(Belum tersedia karena gabisa login ke developer facebook)* ⚠️
 
 ### 👥 Membership
+- **Sistem Tiering Otomatis**:
+  - User dari Social Login (Google) akan diarahkan otomatis untuk memilih membership jika data belum lengkap.
 - Tersedia 3 tipe membership:
   - 🟢 **Tipe A**: Akses 3 Artikel & 3 Video
   - 🔵 **Tipe B**: Akses 10 Artikel & 10 Video
   - 🟣 **Tipe C**: Akses semua Artikel & Video
+
+### 🚀 Nilai Plus (Marketing Automation)
+- **Marketing Dashboard**: Halaman khusus admin/marketing untuk memantau user.
+- **Email Blast System**: Mengirim email promosi ke seluruh user aktif.
+- **Automated Welcome Email**: Email otomatis saat user baru mendaftar (via Google/Manual).
 
 ### 📄 Konten
 - Halaman dinamis untuk **Artikel** dan **Video**
