@@ -92,7 +92,6 @@
             <h3 class="text-lg font-bold text-blue-800 dark:text-blue-300 mb-2">ℹ️ Status Automatisasi</h3>
             <ul class="list-disc list-inside text-blue-700 dark:text-blue-400 space-y-1">
                 <li><strong>Welcome Email:</strong> Aktif (Dikirim otomatis saat registrasi)</li>
-                <li><strong>Upgrade Confirmation:</strong> Aktif (Dikirim otomatis saat user melakukan upgrade membership)</li>
             </ul>
         </div>
 
