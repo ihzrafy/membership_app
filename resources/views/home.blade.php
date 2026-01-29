@@ -4,33 +4,40 @@
 
 @section('content')
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+<div class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gray-900 dark:to-gray-800 text-white transition-colors duration-500">
+    <div class="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]"></div>
+    <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-white/10 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+        <div class="text-center animate-fade-in-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
                 Selamat Datang di <br>
-                <span class="text-yellow-300">Membership App</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 drop-shadow-sm">Membership App</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-                Platform konten eksklusif dengan sistem membership yang memberikan akses berbeda berdasarkan tipe keanggotaan Anda
+            <p class="text-xl md:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto font-light leading-relaxed">
+                Platform konten eksklusif dengan sistem membership yang memberikan akses berbeda berdasarkan tipe keanggotaan Anda.
             </p>
             
             @guest
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="{{ route('register') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                        Daftar Sekarang
+                    <a href="{{ route('register') }}" class="group relative px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-xl text-lg font-bold transition-all duration-200 shadow-[0_10px_20px_-10px_rgba(250,204,21,0.5)] hover:shadow-[0_20px_30px_-15px_rgba(250,204,21,0.6)] transform hover:-translate-y-1">
+                        <span class="flex items-center">
+                            Daftar Sekarang
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        </span>
                     </a>
-                    <a href="{{ route('login') }}" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                        Login
+                    <a href="{{ route('login') }}" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-xl text-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1">
+                        Masuk Akun
                     </a>
                 </div>
             @else
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="{{ route('dashboard') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                        Dashboard
-                    </a>
-                    <a href="{{ route('articles.index') }}" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                        Lihat Artikel
+                    <a href="{{ route('dashboard') }}" class="group relative px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-xl text-lg font-bold transition-all duration-200 shadow-[0_10px_20px_-10px_rgba(250,204,21,0.5)] hover:shadow-[0_20px_30px_-15px_rgba(250,204,21,0.6)] transform hover:-translate-y-1">
+                        <span class="flex items-center">
+                            Ke Dashboard
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                        </span>
                     </a>
                 </div>
             @endguest
@@ -39,276 +46,145 @@
 </div>
 
 <!-- Membership Types -->
-<div class="py-16 bg-white dark:bg-gray-900">
+<div class="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <div class="text-center mb-16 animate-fade-in-up">
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Pilih Membership Anda
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">
-                Dapatkan akses ke konten berkualitas sesuai dengan kebutuhan Anda
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Dapatkan akses ke konten berkualitas sesuai dengan kebutuhan Anda dengan harga terjangkau.
             </p>
         </div>
-
+        
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Membership A -->
-            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                <div class="text-center mb-8">
-                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold text-green-600 dark:text-green-400">A</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tipe A</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Untuk pemula yang ingin mencoba</p>
+            <!-- Tier A -->
+            <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in-up" onclick="window.location='{{ route('register') }}?membership=A'" style="cursor: pointer;">
+                <div class="bg-gradient-to-br from-green-400 to-emerald-600 p-6 text-white text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold mb-2">STARTER</span>
+                    <h3 class="text-2xl font-bold mb-2">Tier A</h3>
+                    <div class="text-4xl font-extrabold mb-1">IDR 50.000</div>
+                    <div class="text-sm opacity-90">sekali bayar</div>
                 </div>
-                
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Akses 3 Artikel
-                    </div>
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Akses 3 Video
-                    </div>
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Support Email
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">Gratis</span>
+                <div class="p-8">
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Akses <strong>3</strong> Artikel Premium</span>
+                        </li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Akses <strong>3</strong> Video Tutorial</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span>Prioritas Support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 px-4 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white font-bold rounded-xl hover:bg-green-500 hover:text-white transition-colors duration-300">
+                        Pilih Tier A
+                    </button>
                 </div>
             </div>
 
-            <!-- Membership B -->
-            <div class="bg-blue-50 dark:bg-blue-900 rounded-2xl p-8 border-2 border-blue-500 dark:border-blue-400 hover:shadow-lg transition-shadow transform scale-105">
-                <div class="text-center mb-8">
-                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">B</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tipe B</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Pilihan populer untuk user aktif</p>
-                    <div class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold mt-2">
-                        Populer
-                    </div>
+            <!-- Tier B (Popular) -->
+            <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl border-2 border-indigo-500 transform scale-105 hover:scale-110 transition-all duration-300 relative z-10 animate-fade-in-up" onclick="window.location='{{ route('register') }}?membership=B'" style="cursor: pointer; animation-delay: 0.2s;">
+                <div class="absolute top-0 right-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-bl-lg z-10">POPULAR</div>
+                <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-8 text-white text-center relative overflow-hidden">
+                    <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold mb-2">PRO</span>
+                    <h3 class="text-3xl font-bold mb-2">Tier B</h3>
+                    <div class="text-5xl font-extrabold mb-1">IDR 100.000</div>
+                    <div class="text-sm opacity-90">sekali bayar</div>
                 </div>
-                
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Akses 10 Artikel
-                    </div>
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Akses 10 Video
-                    </div>
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Priority Support
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">Rp 99K</span>
-                    <span class="text-gray-600 dark:text-gray-400">/bulan</span>
+                <div class="p-8">
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Akses <strong>10</strong> Artikel Premium</span>
+                        </li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Akses <strong>10</strong> Video Tutorial</span>
+                        </li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Prioritas Support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/30 transition-all duration-300">
+                        Pilih Tier B
+                    </button>
                 </div>
             </div>
 
-            <!-- Membership C -->
-            <div class="bg-purple-50 dark:bg-purple-900 rounded-2xl p-8 border border-purple-200 dark:border-purple-700 hover:shadow-lg transition-shadow">
-                <div class="text-center mb-8">
-                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">C</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tipe C</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Akses unlimited untuk professional</p>
+            <!-- Tier C -->
+            <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in-up" onclick="window.location='{{ route('register') }}?membership=C'" style="cursor: pointer; animation-delay: 0.4s;">
+                <div class="bg-gradient-to-br from-purple-500 to-pink-600 p-6 text-white text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 -ml-4 -mt-4 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold mb-2">ULTIMATE</span>
+                    <h3 class="text-2xl font-bold mb-2">Tier C</h3>
+                    <div class="text-4xl font-extrabold mb-1">IDR 150.000</div>
+                    <div class="text-sm opacity-90">sekali bayar</div>
                 </div>
-                
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-purple-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Artikel Unlimited
-                    </div>
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-purple-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Video Unlimited
-                    </div>
-                    <div class="flex items-center text-gray-700 dark:text-gray-300">
-                        <svg class="w-5 h-5 text-purple-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        24/7 Support
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">Rp 199K</span>
-                    <span class="text-gray-600 dark:text-gray-400">/bulan</span>
+                <div class="p-8">
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Akses <strong>UNLIMITED</strong> Artikel</span>
+                        </li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Akses <strong>UNLIMITED</strong> Video</span>
+                        </li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300">
+                            <svg class="w-6 h-6 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>VIP Support 24/7</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 px-4 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white font-bold rounded-xl hover:bg-purple-500 hover:text-white transition-colors duration-300">
+                        Pilih Tier C
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Latest Content Preview -->
-@if($latestArticles->count() > 0 || $latestVideos->count() > 0)
-<div class="py-16 bg-gray-50 dark:bg-gray-800">
+<!-- Features Section -->
+<div class="py-24 bg-white dark:bg-gray-800 transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Latest Articles -->
-        @if($latestArticles->count() > 0)
-        <div class="mb-16">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Artikel Terbaru</h2>
-                @auth
-                    <a href="{{ route('articles.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">
-                        Lihat Semua →
-                    </a>
-                @endauth
+        <div class="text-center mb-16 animate-fade-in-up">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Kenapa Memilih Kami?</h2>
+            <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center group animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div class="w-20 h-20 mx-auto bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Konten Premium</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Akses materi pembelajaran eksklusif yang disusun oleh praktisi berpengalaman.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($latestArticles as $article)
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-                    @if($article->image)
-                        <img src="{{ $article->image }}" alt="{{ $article->title }}" class="w-full h-48 object-cover">
-                    @else
-                        <div class="w-full h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                            <span class="text-white text-2xl font-bold">📖</span>
-                        </div>
-                    @endif
-                    
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
-                            {{ $article->title }}
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                            {{ $article->excerpt ?? Str::limit(strip_tags($article->content), 120) }}
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">
-                                {{ $article->published_at?->format('d M Y') }}
-                            </span>
-                            @auth
-                                <a href="{{ route('articles.show', $article) }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">
-                                    Baca →
-                                </a>
-                            @else
-                                <span class="text-gray-400">Login untuk baca</span>
-                            @endauth
-                        </div>
-                    </div>
+            <div class="text-center group animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="w-20 h-20 mx-auto bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                 </div>
-                @endforeach
-            </div>
-        </div>
-        @endif
-
-        <!-- Latest Videos -->
-        @if($latestVideos->count() > 0)
-        <div>
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Video Terbaru</h2>
-                @auth
-                    <a href="{{ route('videos.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">
-                        Lihat Semua →
-                    </a>
-                @endauth
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Video Berkualitas</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Tutorial video resolusi tinggi dengan penjelasan yang mudah dipahami.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($latestVideos as $video)
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-                    @if($video->thumbnail)
-                        <img src="{{ $video->thumbnail }}" alt="{{ $video->title }}" class="w-full h-48 object-cover">
-                    @else
-                        <div class="w-full h-48 bg-gradient-to-br from-red-400 to-pink-500 flex items-center justify-center">
-                            <span class="text-white text-2xl font-bold">🎥</span>
-                        </div>
-                    @endif
-                    
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
-                            {{ $video->title }}
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                            {{ $video->description ?? 'Tidak ada deskripsi' }}
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">
-                                {{ $video->duration ?? 'N/A' }}
-                            </span>
-                            @auth
-                                <a href="{{ route('videos.show', $video) }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">
-                                    Tonton →
-                                </a>
-                            @else
-                                <span class="text-gray-400">Login untuk tonton</span>
-                            @endauth
-                        </div>
-                    </div>
+            <div class="text-center group animate-fade-in-up" style="animation-delay: 0.3s;">
+                <div class="w-20 h-20 mx-auto bg-indigo-100 dark:bg-indigo-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
-                @endforeach
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Update Rutin</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Materi baru ditambahkan setiap minggu agar Anda selalu up-to-date.</p>
             </div>
-        </div>
-        @endif
-    </div>
-</div>
-@endif
-
-@guest
-<!-- CTA Section -->
-<div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Siap untuk Memulai?
-        </h2>
-        <p class="text-xl mb-8 text-purple-100">
-            Bergabunglah dengan ribuan member yang sudah menikmati konten berkualitas kami
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('register') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                Daftar Gratis
-            </a>
-            <a href="{{ route('login') }}" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                Sudah Punya Akun?
-            </a>
         </div>
     </div>
 </div>
-@endguest
-
-@push('scripts')
-<style>
-.line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-</style>
-@endpush
 @endsection

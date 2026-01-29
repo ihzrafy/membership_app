@@ -13,29 +13,35 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create test users
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@membership.com',
-            'password' => Hash::make('password'),
-            'membership_type' => 'C',
-            'email_verified_at' => now(),
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@membership.com'],
+            [
+                'name' => 'Admin User',
+                'password' => Hash::make('password'),
+                'membership_type' => 'C',
+                'email_verified_at' => now(),
+            ]
+        );
 
-        User::create([
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => Hash::make('password'),
-            'membership_type' => 'A',
-            'email_verified_at' => now(),
-        ]);
+        User::firstOrCreate(
+            ['email' => 'john@example.com'],
+            [
+                'name' => 'John Doe',
+                'password' => Hash::make('password'),
+                'membership_type' => 'A',
+                'email_verified_at' => now(),
+            ]
+        );
 
-        User::create([
-            'name' => 'Jane Smith',
-            'email' => 'jane@example.com',
-            'password' => Hash::make('password'),
-            'membership_type' => 'B',
-            'email_verified_at' => now(),
-        ]);
+        User::firstOrCreate(
+            ['email' => 'jane@example.com'],
+            [
+                'name' => 'Jane Smith',
+                'password' => Hash::make('password'),
+                'membership_type' => 'B',
+                'email_verified_at' => now(),
+            ]
+        );
 
         // Create dummy articles
         $articles = [
@@ -224,7 +230,97 @@ A/B testing dapat ditingkatkan dengan ML untuk automatically optimize conversion
                 'author' => 'ML Engineer',
                 'published_at' => now()->subDays(22),
                 'is_active' => true,
-            ]
+            ],
+            [
+                'title' => 'Mengenal Tailwind CSS: Utility-First CSS Framework',
+                'content' => 'Tailwind CSS adalah framework CSS yang mengusung konsep utility-first. Berbeda dengan framework tradisional seperti Bootstrap yang menyediakan komponen siap pakai, Tailwind menyediakan class-class utilitas low-level.
+
+Dengan Tailwind, Anda tidak perlu meninggalkan file HTML untuk men-style elemen. Anda cukup menambahkan class seperti flex, pt-4, text-center, dan rotate-90 langsung ke element.
+
+Pendekatan ini memiliki beberapa keuntungan. Pertama, ukuran file CSS yang dihasilkan sangat kecil karena Tailwind akan menghapus class yang tidak digunakan (tree-shaking) saat proses build.
+
+Kedua, styling menjadi lebih konsisten karena Anda menggunakan nilai-nilai yang sudah didefinisikan dalam config file. Tidak ada lagi "magic number" atau nilai pixel yang sembarangan.
+
+Ketiga, Anda tidak perlu pusing memikirkan nama class. Salah satu hal tersulit dalam CSS adalah memberi nama class (naming convention), dan Tailwind menghilangkan masalah ini.
+
+Meskipun terlihat berantakan di awal karena banyaknya class di HTML, penggunaan Tailwind dapat mempercepat development secara signifikan setelah Anda terbiasa.',
+                'excerpt' => 'Pelajari konsep utility-first CSS framework yang sedang naik daun ini untuk styling yang lebih cepat.',
+                'author' => 'Frontend Master',
+                'published_at' => now()->subDays(25),
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Pengenalan GraphQL: Alternatif REST API',
+                'content' => 'GraphQL adalah query language untuk API dan runtime untuk memenuhi query tersebut dengan data yang ada. GraphQL memberikan alternatif yang efisien untuk REST API.
+
+Kelebihan utama GraphQL adalah client dapat meminta data spesifik yang mereka butuhkan, tidak lebih dan tidak kurang. Ini memecahkan masalah over-fetching dan under-fetching yang umum terjadi pada REST API.
+
+Dengan GraphQL, Anda memiliki satu endpoint tunggal, bukan banyak endpoint untuk resource yang berbeda seperti pada REST. Client mengirim query yang mendeskripsikan struktur data yang diinginkan.
+
+GraphQL menggunakan strong typing system. Schema didefinisikan dengan jelas, sehingga client dan server memiliki kontrak yang pasti tentang bentuk data.
+
+Tools dan ecosystem GraphQL juga sangat berkembang. GraphiQL atau Apollo Sandbox memudahkan developer untuk mengetes query dan melihat dokumentasi schema secara langsung.
+
+Banyak perusahaan besar seperti GitHub, Shopify, dan Facebook (pembuatnya) telah beralih menggunakan GraphQL untuk API publik mereka.',
+                'excerpt' => 'Mengapa GraphQL menjadi populer dan kapan Anda sebaiknya menggunakannya dibanding REST API.',
+                'author' => 'API Architect',
+                'published_at' => now()->subDays(28),
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Cara Menggunakan GitHub Copilot untuk Productivity',
+                'content' => 'GitHub Copilot adalah asisten coding berbasis AI yang dapat membantu Anda menulis kode lebih cepat. Copilot menggunakan OpenAI Codex untuk menyarankan kode dan fungsi secara real-time.
+
+Copilot dapat memahami konteks kode Anda, termasuk variabel, fungsi, dan komentar. Anda cukup menulis komentar tentang apa yang ingin Anda lakukan, dan Copilot akan mencoba mengimplementasikannya.
+
+Fitur ini sangat berguna untuk tugas-tugas repetitif, menulis boiler-plate code, atau bahkan mempelajari library baru. Copilot juga dapat membantu menulis unit test.
+
+Namun, penting untuk diingat bahwa Copilot tidak sempurna. Kode yang dihasilkan harus selalu direview dan diuji. Copilot adalah asisten, bukan pengganti programmer.
+
+Tips menggunakan Copilot: Gunakan nama variabel dan fungsi yang deskriptif. Tulis komentar yang jelas. Buka file-file terkait agar Copilot mendapatkan konteks yang lebih baik.
+
+Selain Copilot, ada juga tools AI lain seperti ChatGPT dan Claude yang dapat membantu dalam proses development, mulai dari brainstorming hingga debugging.',
+                'excerpt' => 'Maksimalkan produktivitas coding Anda dengan bantuan asisten AI seperti GitHub Copilot.',
+                'author' => 'AI Enthusiast',
+                'published_at' => now()->subDays(30),
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Clean Code: Seni Menulis Kode yang Mudah Dibaca',
+                'content' => 'Menulis kode yang "working" itu mudah, tapi menulis kode yang "clean" adalah tantangan tersendiri. Clean Code adalah tentang menulis kode yang mudah dipahami, dipelihara, dan dikembangkan oleh manusia.
+
+Prinsip-prinsip Clean Code dipopulerkan oleh Robert C. Martin (Uncle Bob). Salah satu prinsip utamanya adalah "Meaningful Names". Gunakan nama yang jelas dan deskriptif untuk variabel, fungsi, dan class.
+
+Fungsi haruslah kecil dan hanya melakukan satu hal (Single Responsibility Principle). Jika fungsi Anda terlalu panjang atau melakukan banyak hal, pecahlah menjadi fungsi-fungsi yang lebih kecil.
+
+Hindari duplikasi kode (DRY - Don\'t Repeat Yourself). Jika Anda menyalin-tempel kode di beberapa tempat, itu adalah tanda bahwa Anda perlu membuat abstraksi atau fungsi baru.
+
+Komentar sebaiknya digunakan seperlunya. Kode yang bersih seharusnya sudah cukup ekspresif tanpa perlu banyak komentar. Gunakan komentar untuk menjelaskan "mengapa", bukan "apa".
+
+Penanganan error yang baik juga merupakan bagian dari Clean Code. Jangan biarkan exception tidak tertangani atau ditelan begitu saja.',
+                'excerpt' => 'Pentingnya menulis kode yang bersih dan mudah dipelihara untuk keberlanjutan proyek software.',
+                'author' => 'Senior Engineer',
+                'published_at' => now()->subDays(32),
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Manajemen State pada React dengan Redux',
+                'content' => 'State management adalah salah satu aspek paling menantang dalam pengembangan aplikasi frontend yang kompleks. Redux adalah library populer untuk mengelola state aplikasi JavaScript.
+
+Redux bekerja dengan prinsip "Single Source of Truth". Seluruh state aplikasi disimpan dalam satu object store. Ini memudahkan debugging dan pelacakan perubahan data.
+
+Konsep utama Redux adalah: Store (tempat menyimpan state), Action (objek yang mendeskripsikan apa yang terjadi), dan Reducer (fungsi yang menentukan bagaimana state berubah berdasarkan action).
+
+Perubahan state di Redux bersifat pure function dan immutable. Kita tidak mengubah state secara langsung, melainkan membuat copy state baru dengan perubahan yang diinginkan.
+
+Meskipun Redux sangat powerful, ia juga dikenal memiliki banyak boilerplate code. Redux Toolkit hadir untuk menyederhanakan penggunaan Redux dengan syntax yang lebih ringkas.
+
+Alternatif state management lain seperti Context API, Zustand, atau Recoil juga layak dipertimbangkan tergantung kompleksitas aplikasi Anda.',
+                'excerpt' => 'Mendalami konsep state management global di aplikasi React menggunakan Redux.',
+                'author' => 'React Developer',
+                'published_at' => now()->subDays(35),
+                'is_active' => true,
+            ],
         ];
 
         foreach ($articles as $articleData) {

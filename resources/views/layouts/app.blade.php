@@ -21,32 +21,67 @@
                     fontFamily: {
                         sans: ['Figtree', 'sans-serif'],
                     },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
                 }
             }
         }
     </script>
+    
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .glass-effect {
+            background: rgba(17, 24, 39, 0.7);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
 
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 min-h-full">
-    <div class="min-h-screen flex flex-col">
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 min-h-full transition-colors duration-300">
+    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
         <!-- Navigation -->
-        <nav class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <nav class="glass-effect sticky top-0 z-50 border-b border-gray-200/50 dark:border-gray-700/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
                         <!-- Logo -->
-                        <a href="{{ route('home') }}" class="flex items-center">
-                            <span class="text-xl font-bold text-gray-900 dark:text-white">
-                                🎯 Membership App
+                        <a href="{{ route('home') }}" class="flex items-center group">
+                            <span class="text-2xl mr-2 transform group-hover:scale-110 transition-transform duration-200">🎯</span>
+                            <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all duration-300">
+                                Membership App
                             </span>
                         </a>
                     </div>
 
                     <!-- Navigation Links -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="{{ route('home') }}" class="text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors">
+                        <a href="{{ route('home') }}" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-indigo-600 after:transition-all hover:after:w-full">
                             Home
                         </a>
                         
