@@ -21,7 +21,9 @@ class SocialAuthController extends Controller
         try {
             // Always use stateless mode for Google to avoid session state issues
             if ($provider === 'google') {
-                return Socialite::driver($provider)->stateless()->redirect();
+                /** @var \Laravel\Socialite\Two\AbstractProvider $driver */
+                $driver = Socialite::driver($provider);
+                return $driver->stateless()->redirect();
             }
             
             // For other providers, use regular mode

@@ -68,11 +68,12 @@
                         </div>
                         
                         <!-- Membership Visual Card -->
-                        <div class="relative overflow-hidden rounded-2xl p-8 mb-8 text-white
-                            @if($user->membership_type === 'A') bg-gradient-to-br from-green-500 to-teal-600
-                            @elseif($user->membership_type === 'B') bg-gradient-to-br from-indigo-500 to-blue-600
-                            @else bg-gradient-to-br from-purple-500 to-pink-600
-                            @endif shadow-lg transform transition-transform hover:scale-[1.01] duration-300">
+                        <div @class([
+                            'relative overflow-hidden rounded-2xl p-8 mb-8 text-white shadow-lg transform transition-transform hover:scale-[1.01] duration-300 bg-gradient-to-br',
+                            'from-green-500 to-teal-600' => $user->membership_type === 'A',
+                            'from-indigo-500 to-blue-600' => $user->membership_type === 'B',
+                            'from-purple-500 to-pink-600' => $user->membership_type !== 'A' && $user->membership_type !== 'B',
+                        ])>
                             
                             <!-- decorative circles -->
                             <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>

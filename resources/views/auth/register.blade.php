@@ -32,7 +32,11 @@
                         </svg>
                     </div>
                     <input id="name" name="name" type="text" autocomplete="name" required value="{{ old('name') }}"
-                        class="appearance-none relative block w-full px-3 py-3 pl-10 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300 @error('name') border-red-500 @enderror" 
+                        @class([
+                            'appearance-none relative block w-full px-3 py-3 pl-10 border placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300',
+                            'border-gray-300 dark:border-gray-600' => !$errors->has('name'),
+                            'border-red-500' => $errors->has('name'),
+                        ])
                         placeholder="Nama Lengkap">
                     @error('name')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -48,7 +52,11 @@
                         </svg>
                     </div>
                     <input id="email" name="email" type="email" autocomplete="email" required value="{{ old('email') }}"
-                        class="appearance-none relative block w-full px-3 py-3 pl-10 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300 @error('email') border-red-500 @enderror" 
+                        @class([
+                            'appearance-none relative block w-full px-3 py-3 pl-10 border placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300',
+                            'border-gray-300 dark:border-gray-600' => !$errors->has('email'),
+                            'border-red-500' => $errors->has('email'),
+                        ])
                         placeholder="Alamat Email">
                     @error('email')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -64,7 +72,11 @@
                         </svg>
                     </div>
                     <select id="membership_type" name="membership_type" required 
-                        class="appearance-none relative block w-full px-3 py-3 pl-10 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300 @error('membership_type') border-red-500 @enderror">
+                        @class([
+                            'appearance-none relative block w-full px-3 py-3 pl-10 border placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300',
+                            'border-gray-300 dark:border-gray-600' => !$errors->has('membership_type'),
+                            'border-red-500' => $errors->has('membership_type'),
+                        ])>
                         <option value="" disabled selected>Pilih Tipe Membership</option>
                         <option value="A" {{ old('membership_type') == 'A' ? 'selected' : '' }}>Tier A (IDR 50.000)</option>
                         <option value="B" {{ old('membership_type') == 'B' ? 'selected' : '' }}>Tier B (IDR 100.000)</option>
@@ -87,7 +99,11 @@
                         </svg>
                     </div>
                     <input id="password" name="password" type="password" required 
-                        class="appearance-none relative block w-full px-3 py-3 pl-10 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300 @error('password') border-red-500 @enderror" 
+                        @class([
+                            'appearance-none relative block w-full px-3 py-3 pl-10 border placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all duration-300',
+                            'border-gray-300 dark:border-gray-600' => !$errors->has('password'),
+                            'border-red-500' => $errors->has('password'),
+                        ])
                         placeholder="Password">
                     @error('password')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
